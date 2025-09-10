@@ -1,0 +1,40 @@
+{
+  "name": "apadmi-contentful-tools-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "contentful": "contentful",
+    "contentful-merge": "contentful-merge",
+    "run-migrations": "tsx src/contentful/management-scripts/run-migrations.ts"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.81.2",
+    "@types/minimist": "^1.2.5",
+    "axios": "^1.10.0",
+    "contentful-cli": "3.3.3",
+    "contentful-management": "11.27.5",
+    "contentful-merge": "^2.6.13",
+    "contentful-migration": "4.22.0",
+    "next": "15.3.4",
+    "pino": "^9.2.0",
+    "pino-pretty": "^11.2.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tsx": "^4.20.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "contentful-cli": "3.3.3",
+    "dotenv": "16.4.5",
+    "minimist": "^1.2.8",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
