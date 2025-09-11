@@ -11,26 +11,29 @@ The following are the instructions for using this repo, for contributing see CON
 This project aims to plug the gap in Contentful's out of the box offering, that being:
 
 1. CMS as code: Contentful provides all the tools needed in SDKs and CLIs to support CMS as code but none of it "just works". This project pulls those pieces together.
-2. Content promotions between environments: This just doesn't really work out of the box. 
+2. Content promotions between environments: This just doesn't really work out of the box.
 
-To achieve this, we use a web based front end since it's easier than scripts. 
+To achieve this, we use a web based front end since it's easier than scripts.
 
 ## Getting Started
 
 (This only needs doing once, if you're reading this from an active project, skip to "Setup the web portal").
 
 ### Setup Contentful
+
 1. Create all the environments you need. Remember you always need one environment slot free for migrations.
 2. Install the merge app in all your environments https://www.contentful.com/developers/docs/tutorials/general/merge-app/ (you won't use the UI for it, but the script won't run without it)
 3. Create a CMA (Content Management aka Access) Token
 4. Create a CDA token (Content delivery token)
-    * Your CDA token needs access to all environments (so have a separate one to the one you use for prod)
+   - Your CDA token needs access to all environments (so have a separate one to the one you use for prod)
 
 ### Setup your repo
 
+cd ..
+
 1. Create a new repo to manage your Contentful environment
 2. Clone this repo as a submodule i.e `git submodule add git@github.com:Apadmi-Engineering/contentful-tools.git`
-3. Run the setup script *from the root of your new repo*: `./contentful-tools/scripts/setup.sh`
+3. Run the setup script _from the root of your new repo_: `./contentful-tools/scripts/setup.sh`
 4. Fill in the environment variable templates created (.env and .env.local)
 5. Enable bitbucket pipelines and add your CMA token as a secret with the key CMA_TOKEN.
 6. Create branches for each of your environments of the form `contentful-environment/<env>`. This will be how you track the migrations applied to environments.
@@ -65,11 +68,13 @@ components are defined and managed through code.
 ### This approach doesn't use gitflow
 
 You should have a branch for each of your main environments in Contentful. So lets say we have the environments
+
 - test
 - pre-prod
 - production
 
 So to promote the content changes from test to preprod the process is:
+
 1. Merge `contentful-environment/test` into `contentful-environment/pre-prod`
 2. This should trigger a bitbucket pipeline job to update `pre-prod` with all the scripts now in that branch.
 
