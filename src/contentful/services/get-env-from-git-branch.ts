@@ -4,7 +4,7 @@ import {Space} from "contentful-management";
 import {rootDir} from "@/contentful/utils/utils";
 
 export const getEnvFromGitBranch = async (space: Space) => {
-    const branchName = execSync(`git -C ${rootDir} rev-parse --abbrev-ref HEAD`).toString()
+    const branchName = execSync(`git -C "${rootDir}" rev-parse --abbrev-ref HEAD`).toString()
     const envs = await space.getEnvironments();
     const envName = branchName
         .replace("contentful-environment/", "")

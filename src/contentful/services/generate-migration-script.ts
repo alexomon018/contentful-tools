@@ -15,7 +15,7 @@ export const generateMigration = async (space: Space, sourceEnv: string, targetE
         space, [
             `--source-environment-id ${sourceEnv}`,
             `--target-environment-id ${targetEnv}`,
-            `--output-file ${migrationFileName}`
+            `--output-file "${migrationFileName}"`
         ]
     )
     return migrationFileName;
