@@ -17,7 +17,7 @@ export const runIndividualMigration = async (space: Space, targetEnv: Environmen
         "space migration",
         space, [
             `--environment-id ${targetEnv.name}`,
-            migration.filePath,
+            `"${migration.filePath}"`,
             "--yes"
         ]
     )
