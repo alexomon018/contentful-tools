@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
 
         const branchName = `migration/${migrationName}`;
         // Create git branch
-        execSync(`git -C ${rootDir} checkout ${branchName} || git -C ${rootDir} checkout -b ${branchName}`).toString();
+        execSync(`git -C "${rootDir}" checkout ${branchName} || git -C "${rootDir}" checkout -b ${branchName}`).toString();
         const envName = `migration-${migrationName}`;
 
         try {
