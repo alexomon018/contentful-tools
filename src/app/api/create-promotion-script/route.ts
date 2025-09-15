@@ -22,12 +22,16 @@ export async function POST(req: NextRequest) {
         );
 
         // Important we don't migrate the tracking data since this needs to remain environment specific
-        const migrationTracker = await getMigrationTrackingEntry((await space.getEnvironments())
+        const targetMigrationTracker = await getMigrationTrackingEntry((await space.getEnvironments())
             .items
             .find((it) => it.name == targetEnv)!);
 
+        const sourceMigrationTracker = await getMigrationTrackingEntry((await space.getEnvironments())
+            .items
+            .find((it) => it.name == envToPromote)!);
+
         scriptContent.items = scriptContent.items.filter(
-            (it) => it.entity.sys.id != migrationTracker.sys.id,
+            (it) => it.entity.sys.id != targetMigrationTracker.sys.id && it.entity.sys.id != sourceMigrationTracker.sys.id,
         );
 
         return NextResponse.json(scriptContent);
